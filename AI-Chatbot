@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience next-gen AI assistance with our friendly chatbot interface. Get instant help with your queries through our intelligent virtual assistant.">
+    <meta name="keywords" content="AI chatbot, virtual assistant, smart assistant, automated help, AI technology">
+    <meta name="author" content="AI Assist">
+    <meta name="robots" content="index, follow">
+    <title>AI Assist - Your Friendly Virtual Assistant</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4a8fe7;
+            --secondary-color: #5bc0be;
+            --accent-color: #e6f9ff;
+            --text-color: #333;
+            --light-text: #777;
+            --bg-color: #f9fbfd;
+            --card-color: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--card-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 143, 231, 0.05), rgba(91, 192, 190, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 143, 231, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(74, 143, 231, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 143, 231, 0.4);
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .chatbot-container {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-header-text h3 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        
+        .chatbot-header-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .chatbot-messages {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: var(--accent-color);
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bot-message {
+            align-items: flex-start;
+        }
+        
+        .user-message {
+            align-items: flex-end;
+        }
+        
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+        }
+        
+        .bot-message .message-bubble {
+            background-color: white;
+            border-bottom-left-radius: 5px;
+            color: var(--text-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .user-message .message-bubble {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 15px;
+            background-color: var(--card-color);
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .chatbot-input input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 143, 231, 0.2);
+        }
+        
+        .chatbot-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .chatbot-input button:hover {
+            background-color: #3a7bd5;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(74, 143, 231, 0.1), rgba(91, 192, 190, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--light-text);
+        }
+        
+        /* Ad Section */
+        .ad-section {
+            padding: 40px 0;
+            background-color: #f5f9ff;
+        }
+        
+        .ad-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .ad-placeholder {
+            background-color: #f0f4ff;
+            padding: 30px;
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 143, 231, 0.03), rgba(91, 192, 190, 0.03));
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .step {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: var(--light-text);
+        }
+        
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 2px;
+            height: calc(100% - 50px);
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            z-index: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: rgba(74, 143, 231, 0.1);
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            line-height: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--light-text);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .secondary-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2a3547;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .footer-about p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.7;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .chatbot-container {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .features, .how-it-works, .testimonials, .cta-section {
+                padding: 60px 0;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <span>AI Assist</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Your Friendly AI Assistant, Always Ready to Help</h1>
+                    <p>Experience the future of customer support with our intelligent chatbot that provides instant, accurate responses 24/7.</p>
+                    <a href="#chatbot" class="cta-button">Try It Now</a>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="chatbot-container">
+                        <div class="chatbot-header">
+                            <div class="chatbot-avatar">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <div class="chatbot-header-text">
+                                <h3>AI Assistant</h3>
+                                <p>Online</p>
+                            </div>
+                        </div>
+                        
+                        <div class="chatbot-messages">
+                            <div class="message bot-message">
+                                <div class="message-bubble">
+                                    Hi there! 👋 I'm your AI assistant. How can I help you today?
+                                </div>
+                            </div>
+                            
+                            <div class="message user-message">
+                                <div class="message-bubble">
+                                    What can you do for me?
+                                </div>
+                            </div>
+                            
+                            <div class="message bot-message">
+                                <div class="message-bubble">
+                                    I can answer questions, provide recommendations, help with troubleshooting, and much more! Try asking me anything.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chatbot-input">
+                            <input type="text" placeholder="Type your message...">
+                            <button><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Section -->
+    <section class="ad-section">
+        <div class="container">
+            <div class="ad-container">
+                <!-- Replace with your Google AdSense code -->
+                <div class="ad-placeholder">
+                    Advertisement Space
+                    <!-- Google AdSense Ad Unit -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                            crossorigin="anonymous"></script>
+                    <!-- Your Ad Unit -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Smart Features</h2>
+                <p>Our AI assistant comes packed with powerful features designed to make your life easier and your business more efficient.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Responses</h3>
+                    <p>Get immediate answers to your questions 24/7 without waiting for human availability.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Continuous Learning</h3>
+                    <p>Our AI learns from every interaction to provide increasingly accurate and helpful responses.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multilingual Support</h3>
+                    <p>Communicate in multiple languages to serve a global audience effortlessly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Gain insights from conversation data to improve your services and customer experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>Seamless Integration</h3>
+                    <p>Easily connect with your existing CRM, helpdesk, and other business tools.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Personalized Experience</h3>
+                    <p>Tailor conversations based on user preferences and past interactions for better engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Getting started with our AI assistant is simple and straightforward.</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sign Up</h3>
+                        <p>Create your account in minutes with our simple onboarding process. No credit card required for the free trial.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Customize Your Assistant</h3>
+                        <p>Train your AI with your knowledge base, FAQs, and brand personality to ensure consistent, on-brand responses.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Integrate</h3>
+                        <p>Add the chatbot to your website, mobile app, or messaging platforms with just a few lines of code.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Go Live</h3>
+                        <p>Launch your AI assistant and start providing instant support to your customers around the clock.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Don't just take our word for it. Here's what our customers have to say about their experience.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Implementing this AI assistant reduced our customer support tickets by 40% while improving customer satisfaction scores. It's been a game-changer for our small team.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The multilingual capabilities allowed us to expand into new markets without hiring additional support staff. The ROI was evident within the first month.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Director of Operations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Our customers love the instant responses, and our team appreciates how the AI handles routine queries, allowing us to focus on more complex issues.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>David Martinez</h4>
+                            <p>Support Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Customer Support?</h2>
+            <p>Join thousands of businesses already benefiting from our AI assistant. Start your free 14-day trial today.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">Get Started</a>
+                <a href="#" class="secondary-button">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <span>AI Assist</span>
+                    </a>
+                    <p>Empowering businesses with intelligent conversational AI to deliver exceptional customer experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Updates</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new features and tips for getting the most from your AI assistant.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Assist. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple chatbot interaction simulation
+        document.querySelector('.chatbot-input button').addEventListener('click', function() {
+            const input = document.querySelector('.chatbot-input input');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const messagesContainer = document.querySelector('.chatbot-messages');
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user-message';
+                userMessage.innerHTML = `
+                    <div class="message-bubble">${message}</div>
+                `;
+                messagesContainer.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate bot response after a short delay
+                setTimeout(() => {
+                    const botResponses = [
+                        "I understand you're asking about: " + message + ". Here's what I can tell you...",
+                        "That's an interesting question! Based on my knowledge, here's the information you need...",
+                        "I'd be happy to help with that. Here are some details that might be useful...",
+                        "Thanks for your question! Here's what I found..."
+                    ];
+                    
+                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot-message';
+                    botMessage.innerHTML = `
+                        <div class="message-bubble">${randomResponse}</div>
+                    `;
+                    messagesContainer.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        });
+        
+        // Allow pressing Enter to send message
+        document.querySelector('.chatbot-input input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.chatbot-input button').click();
+            }
+        });
+        
